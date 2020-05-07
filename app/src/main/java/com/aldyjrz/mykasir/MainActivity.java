@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity   {
 
         txtTotal = findViewById(R.id.total);
         gridView = findViewById(R.id.gridViewMenu);
+
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity   {
             if (null == listData || listData.size() == 0) {
                 Toast.makeText(MainActivity.this, "Menu Tidak Ditemukan", Toast.LENGTH_LONG).show();
             } else {
-                gridView.setAdapter(new AdapterGridview(MainActivity.this, R.layout.gridview, listData));
+                 gridView.setAdapter(new AdapterGridview(getApplicationContext(), R.layout.grid_view, listData));
             }
 
             setTotal(0);
